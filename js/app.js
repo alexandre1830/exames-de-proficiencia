@@ -155,18 +155,15 @@ class Exam {
     this.main.append(stage);
     this.player.mount(stage);
 
-    // As questoes da Listening sao respondidas durante/depois do audio: renderiza abaixo.
+    // As questoes ficam VISIVEIS durante todo o audio (como no IELTS real): o aluno
+    // le nas previas de 30s e responde enquanto ouve. A prova roda uma unica vez.
     const qWrap = el("div", { class: "questions", style: "margin-top:2rem" });
     for (const it of items) rendererFor(it.primitive).render(qWrap, it);
-    this.questionsListening = qWrap;
-    // So aparecem apos o audio terminar (mantem foco no audio).
-    qWrap.style.display = "none";
     this.main.append(qWrap);
   }
 
-  afterListeningAudio(items) {
-    // Audio acabou + 2 min de revisao: submete automaticamente.
-    if (this.questionsListening) this.questionsListening.style.display = "";
+  afterListeningAudio() {
+    // Audio acabou + 2 min de revisao: submete a secao automaticamente.
     this.submitCurrent();
   }
 
