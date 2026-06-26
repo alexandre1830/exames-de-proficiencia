@@ -9,15 +9,27 @@ const supabase = makeClient();
 
 const DEFAULT_PAUSE_MS = 400;
 
-// Mapa de vozes por papel (brief, secao 9). Vozes Neural2 distintas por personagem.
-const VOICE_MAP: Record<string, { languageCode: string; voiceName: string }> = {
-  R: { languageCode: "en-GB", voiceName: "en-GB-Neural2-A" },
-  M: { languageCode: "en-GB", voiceName: "en-GB-Neural2-B" },
-  G: { languageCode: "en-AU", voiceName: "en-AU-Neural2-B" },
-  T: { languageCode: "en-US", voiceName: "en-US-Neural2-D" },
-  L: { languageCode: "en-GB", voiceName: "en-GB-Neural2-F" },
+// Vozes Studio (tier de maxima qualidade do Google TTS). Studio so existe para
+// en-US e en-GB, entao a Part 2 (antes AU) usa US Studio para manter variedade de
+// sotaque nativo (GB + US). Resolucao por parte + rotulo: o rotulo "M" e masculino
+// na Part 1 (Caller) mas feminino na Part 3 (Mia), por isso nao basta um mapa plano.
+const V = {
+  gbF: { languageCode: "en-GB", voiceName: "en-GB-Studio-C" }, // feminina britanica
+  gbM: { languageCode: "en-GB", voiceName: "en-GB-Studio-B" }, // masculina britanica
+  usF: { languageCode: "en-US", voiceName: "en-US-Studio-O" }, // feminina americana
+  usM: { languageCode: "en-US", voiceName: "en-US-Studio-Q" }, // masculina americana
 };
-const FALLBACK_VOICE = { languageCode: "en-GB", voiceName: "en-GB-Neural2-A" };
+const VOICES_BY_PART: Record<number, Record<string, typeof V.gbF>> = {
+  1: { R: V.gbF, M: V.gbM },          // recepcionista (F) + caller (M)
+  2: { G: V.usM },                    // coordenador (monologo)
+  3: { M: V.gbF, T: V.usM },          // Mia (F, GB) + Tom (M, US)
+  4: { L: V.gbF },                    // palestrante (F)
+};
+const FALLBACK_VOICE = V.gbF;
+
+function resolveVoice(part: number, label: string) {
+  return VOICES_BY_PART[part]?.[label] ?? FALLBACK_VOICE;
+}
 
 // Cada linha do transcript e "LABEL: texto". Devolve { role, text }.
 function parseLine(line: string): { role: string; text: string } {
@@ -52,7 +64,7 @@ Deno.serve(async (req) => {
       for (const raw of lines) {
         const { role, text } = parseLine(String(raw));
         if (!text) continue;
-        const voice = VOICE_MAP[role] ?? FALLBACK_VOICE;
+        const voice = resolveVoice(audio.part, role);
         const { url, cached } = await synthesize(supabase, GOOGLE_KEY, {
           content: text,
           languageCode: voice.languageCode,

@@ -207,18 +207,22 @@ Regra de ouro: **em prova, zero chamadas à API**. O player só faz GET dos arqu
 
 ## 9. Mapa de vozes
 
-Use vozes Neural2 distintas por papel. Os nomes abaixo são exemplos; confirme no catálogo atual de vozes do Google, que muda com o tempo.
+Vozes **Studio** (tier de máxima qualidade do Google TTS), resolvidas por parte +
+rótulo. Studio só existe para `en-US` e `en-GB`, então a Part 2 (antes AU) usa US
+Studio para manter variedade de sotaque nativo (GB + US). Custo único graças ao cache.
+Confirme os nomes no catálogo atual do Google, que muda com o tempo.
 
 ```json
 {
-  "R":  { "languageCode": "en-GB", "voiceName": "en-GB-Neural2-A" },
-  "M":  { "languageCode": "en-GB", "voiceName": "en-GB-Neural2-B" },
-  "G":  { "languageCode": "en-AU", "voiceName": "en-AU-Neural2-B" },
-  "Mia":{ "languageCode": "en-GB", "voiceName": "en-GB-Neural2-C" },
-  "Tom":{ "languageCode": "en-US", "voiceName": "en-US-Neural2-D" },
-  "L":  { "languageCode": "en-GB", "voiceName": "en-GB-Neural2-F" }
+  "1": { "R": "en-GB-Studio-C", "M": "en-GB-Studio-B" },
+  "2": { "G": "en-US-Studio-Q" },
+  "3": { "M (Mia)": "en-GB-Studio-C", "T (Tom)": "en-US-Studio-Q" },
+  "4": { "L": "en-GB-Studio-C" }
 }
 ```
+
+Nota: o rótulo `M` é masculino na Part 1 (Caller) e feminino na Part 3 (Mia), por
+isso a resolução é por parte, não por um mapa plano de rótulo.
 
 ---
 
