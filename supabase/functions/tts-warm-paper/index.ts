@@ -1,0 +1,79 @@
+// tts-warm-paper: pre-gera o audio da Listening de uma prova e grava os segments.
+// Idempotente: reexecutar custa zero (tudo vira cache hit). Roda uma vez no deploy.
+// Protegida por header de admin. O aluno nunca dispara sintese (ADR-06).
+import { makeClient, synthesize } from "../_shared/tts.ts";
+
+const ADMIN_SECRET = Deno.env.get("TTS_ADMIN_SECRET")!;
+const GOOGLE_KEY = Deno.env.get("GOOGLE_TTS_API_KEY")!;
+const supabase = makeClient();
+
+const DEFAULT_PAUSE_MS = 400;
+
+// Mapa de vozes por papel (brief, secao 9). Vozes Neural2 distintas por personagem.
+const VOICE_MAP: Record<string, { languageCode: string; voiceName: string }> = {
+  R: { languageCode: "en-GB", voiceName: "en-GB-Neural2-A" },
+  M: { languageCode: "en-GB", voiceName: "en-GB-Neural2-B" },
+  G: { languageCode: "en-AU", voiceName: "en-AU-Neural2-B" },
+  T: { languageCode: "en-US", voiceName: "en-US-Neural2-D" },
+  L: { languageCode: "en-GB", voiceName: "en-GB-Neural2-F" },
+};
+const FALLBACK_VOICE = { languageCode: "en-GB", voiceName: "en-GB-Neural2-A" };
+
+// Cada linha do transcript e "LABEL: texto". Devolve { role, text }.
+function parseLine(line: string): { role: string; text: string } {
+  const m = line.match(/^([A-Za-z]+)\s*:\s*(.*)$/s);
+  if (m) return { role: m[1].toUpperCase(), text: m[2].trim() };
+  return { role: "", text: line.trim() };
+}
+
+Deno.serve(async (req) => {
+  if (req.headers.get("x-admin-secret") !== ADMIN_SECRET) {
+    return new Response("forbidden", { status: 403 });
+  }
+  try {
+    const { paperId } = await req.json();
+    if (!paperId) return Response.json({ error: "paperId obrigatorio" }, { status: 400 });
+
+    const { data: audios, error } = await supabase
+      .from("audios").select("id, transcript")
+      .eq("paper_id", paperId).order("part");
+    if (error) return Response.json({ error: error.message }, { status: 500 });
+    if (!audios?.length) return Response.json({ error: "sem audios para a prova" }, { status: 404 });
+
+    const summary: Array<{ id: string; lines: number; misses: number }> = [];
+
+    for (const audio of audios) {
+      const lines: string[] = Array.isArray(audio.transcript) ? audio.transcript : [];
+      const segments = [];
+      const segmentsPublic = [];
+      let order = 0;
+      let misses = 0;
+
+      for (const raw of lines) {
+        const { role, text } = parseLine(String(raw));
+        if (!text) continue;
+        const voice = VOICE_MAP[role] ?? FALLBACK_VOICE;
+        const { url, cached } = await synthesize(supabase, GOOGLE_KEY, {
+          content: text,
+          languageCode: voice.languageCode,
+          voiceName: voice.voiceName,
+          audioEncoding: "MP3",
+        });
+        if (!cached) misses++;
+        order++;
+        segments.push({ order, role, text, url, pauseAfterMs: DEFAULT_PAUSE_MS });
+        segmentsPublic.push({ order, url, pauseAfterMs: DEFAULT_PAUSE_MS });
+      }
+
+      await supabase.from("audios").update({
+        segments, segments_public: segmentsPublic,
+      }).eq("id", audio.id);
+
+      summary.push({ id: audio.id, lines: order, misses });
+    }
+
+    return Response.json({ paperId, warmed: summary });
+  } catch (e) {
+    return Response.json({ error: String(e) }, { status: 502 });
+  }
+});

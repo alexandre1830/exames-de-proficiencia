@@ -1,0 +1,308 @@
+{
+  "paperId": "ielts-academic-paper-01",
+  "section": {
+    "skill": "listening",
+    "questionNumbers": "1-40",
+    "estimatedAudioSeconds": 1800,
+    "endCheckSeconds": 120,
+    "audioIds": ["audio-p1", "audio-p2", "audio-p3", "audio-p4"],
+    "playback": {
+      "playOnce": true,
+      "allowPause": false,
+      "allowRewind": false,
+      "previewSecondsBeforeEachGroup": 30,
+      "note": "Reproducao unica, sem pausar nem retroceder. Antes de cada grupo de questoes, 30s de previa para o aluno ler. Ao final, 2 minutos para revisar (entrega por computador). A Part 1 abre com um exemplo nao pontuado."
+    }
+  },
+
+  "audioScripts": [
+    {
+      "id": "audio-p1",
+      "part": 1,
+      "context": "social / transactional",
+      "voices": [
+        { "role": "Receptionist", "label": "R", "suggestedAccent": "British female" },
+        { "role": "Caller", "label": "M", "suggestedAccent": "British male" }
+      ],
+      "example": "R: We're on Mill Lane, that's M-I-L-L, Lane. (exemplo nao pontuado, soletrar ao vivo)",
+      "transcript": [
+        "R: Good morning, Riverside Leisure Centre, how can I help?",
+        "M: Hi, I'd like to ask about becoming a member.",
+        "R: Of course. Are you interested in full membership or off-peak?",
+        "M: What's the difference?",
+        "R: Full membership lets you come any time. Off-peak is cheaper, but only before four in the afternoon on weekdays.",
+        "M: I work mornings, so off-peak would actually suit me well. Let's go with off-peak.",
+        "R: Great. Off-peak membership is twenty-eight pounds a month.",
+        "M: That's fine.",
+        "R: And when would you like to start?",
+        "M: Could I start on the third of May?",
+        "R: The third of May, no problem. When you come in, please bring some photo ID, a passport is ideal, and a recent utility bill so we can confirm your address.",
+        "M: A passport and a utility bill, got it.",
+        "R: Your membership also includes a free induction. That's a one-hour session with a trainer who'll show you how to use the equipment safely.",
+        "M: Oh, that's useful. Actually, I'm mainly interested in the classes. Do you have a timetable?",
+        "R: We do. Which kind of class were you thinking of?",
+        "M: Mostly the swimming classes, if you have them.",
+        "R: We do run swimming sessions. Let me also tell you about our four most popular classes, because the rules are a bit different for each.",
+        "R: The yoga class is perfect if you've never done it before, it's aimed at complete beginners.",
+        "M: Good to know.",
+        "R: Spinning is extremely popular, so you have to book a day in advance or you won't get a bike.",
+        "M: Right.",
+        "R: Pilates is the same, you'll need to book a day ahead for that one too.",
+        "R: And aqua aerobics is included free with your membership, no extra charge.",
+        "M: That all sounds great. Thank you."
+      ]
+    },
+    {
+      "id": "audio-p2",
+      "part": 2,
+      "context": "social / monologue",
+      "voices": [{ "role": "Volunteer coordinator", "label": "G", "suggestedAccent": "Australian male" }],
+      "transcript": [
+        "G: Welcome, everyone, and thank you for volunteering at Marsh View Wetlands Reserve. Let me start by showing you around, using the map in front of you.",
+        "As you come in through the main gate at the bottom of the map, the path splits. Straight ahead of you is the Visitor Centre, where you'll sign in each day.",
+        "Just to the left of the Visitor Centre is the cafe, which is open all day for hot drinks.",
+        "If you follow the main path all the way north to the top of the reserve, you'll reach the bird hide, where we watch and record the birds.",
+        "Over on the western side, beside the lake, there's the pond-dipping platform, where school groups study pond life.",
+        "And in the far south-eastern corner you'll find the picnic area, which is where we usually have lunch.",
+        "Now, a few practical things. On your first day, please bring waterproof clothing. The weather here changes quickly and you'll be outside most of the time.",
+        "Our main activity this season is a bird survey, so most of your time will be spent counting and recording the different species you see.",
+        "And if it rains heavily, don't worry, we won't cancel. We simply move indoors to the Visitor Centre and do sorting and record-keeping instead.",
+        "Finally, two things are out of action this week. The shop is shut while we fix the roof, and the toilets by the entrance are closed today, so please use the ones inside the Visitor Centre. The cafe, the bird hide and the car park are all open as normal."
+      ]
+    },
+    {
+      "id": "audio-p3",
+      "part": 3,
+      "context": "academic / discussion",
+      "voices": [
+        { "role": "Mia (student)", "label": "M", "suggestedAccent": "British female" },
+        { "role": "Tom (student)", "label": "T", "suggestedAccent": "North American male" }
+      ],
+      "transcript": [
+        "M: Tom, shall we go through our presentation on urban green spaces?",
+        "T: Yes. Remind me why we picked this topic?",
+        "M: Well, there's been so much in the local news about the new park lately, it just felt like the most relevant thing we could do.",
+        "T: True. The tricky part was the data.",
+        "M: Definitely. We collected the survey responses, but the problem was that we simply didn't get enough of them. The sample was too small.",
+        "T: So what did the tutor say about that?",
+        "M: She suggested we combine our own survey with the council's existing figures, rather than relying only on what we collected.",
+        "T: Good idea. What about the introduction? It feels too long to me.",
+        "M: Agreed. Let's cut the history section and get to our research question much faster.",
+        "T: And the deadline, are you worried?",
+        "M: Honestly, no. I think we've got plenty of time if we stick to our plan.",
+        "T: Okay, that's a relief. Let's quickly review our sources so we know which ones to actually use.",
+        "M: Sure. The textbook?",
+        "T: The textbook was clear and useful, a good starting point.",
+        "M: And the government report?",
+        "T: Full of information, but honestly too detailed for a ten-minute talk. We'd drown in numbers.",
+        "M: Fair. The journal article?",
+        "T: That one was clear and useful too. I'd definitely cite it.",
+        "M: What about the website we found?",
+        "T: A bit of a problem, the figures were from 2009, so really out of date.",
+        "M: And the documentary?",
+        "T: Interesting, but also quite old now. Out of date, I'd say."
+      ]
+    },
+    {
+      "id": "audio-p4",
+      "part": 4,
+      "context": "academic / lecture",
+      "voices": [{ "role": "Lecturer", "label": "L", "suggestedAccent": "British female" }],
+      "transcript": [
+        "L: Today we're looking at bioluminescence, the production of light by living organisms. Unlike the light from a lamp, this light is made by a chemical reaction inside the organism itself.",
+        "The reaction depends on two key ingredients. The first is a light-producing molecule called luciferin. The second is an enzyme called luciferase, which speeds the reaction up.",
+        "One remarkable feature is that this is a cold light. A normal light bulb wastes most of its energy as heat, but in bioluminescence almost no heat is produced.",
+        "Where do we find it? The vast majority of bioluminescent species live in the ocean, especially in the deep sea, where sunlight never reaches.",
+        "Why do organisms produce light? There are three main reasons. First, attracting prey. The deep-sea anglerfish, for example, dangles a glowing lure to draw smaller fish towards its mouth.",
+        "Second, defence. Many creatures use a sudden flash of light as a warning, or to startle a predator so they can escape.",
+        "Third, finding a mate. Light helps individuals of the same species locate one another in the dark.",
+        "A familiar land example is the firefly. Fireflies flash to attract a mate, and each species has its own distinctive pattern of flashes, almost like a code.",
+        "Defence can be dramatic. Some deep-sea squid release a cloud of glowing liquid into the water to confuse attackers while they slip away.",
+        "Finally, bioluminescence has become a powerful tool for science. Researchers insert the genes responsible for the light into other cells, using the glow as a marker to track processes inside living tissue."
+      ]
+    }
+  ],
+
+  "items": [
+    {
+      "id": "L-p1-form",
+      "skill": "listening", "part": 1, "audioRef": "audio-p1",
+      "questionType": "form_completion", "primitive": "gap_fill",
+      "questionNumbers": [1, 2, 3, 4, 5, 6], "points": 6, "difficultyCEFR": "A2",
+      "instructions": "Complete the form below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": { "maxWords": 2, "allowNumber": true },
+      "template": "Riverside Leisure Centre - Membership enquiry\nType of membership: {{1}}\nCost per month: £{{2}}\nStart date: {{3}}\nDocuments to bring: passport and a recent {{4}}\nFree induction: one-hour session with a {{5}}\nClasses the caller is most interested in: {{6}}",
+      "gaps": [
+        { "n": 1, "accepted": ["off-peak", "off peak"] },
+        { "n": 2, "accepted": ["28"] },
+        { "n": 3, "accepted": ["3 May", "3rd May", "May 3", "3rd of May"] },
+        { "n": 4, "accepted": ["utility bill"] },
+        { "n": 5, "accepted": ["trainer", "fitness trainer"] },
+        { "n": 6, "accepted": ["swimming"] }
+      ]
+    },
+    {
+      "id": "L-p1-matching",
+      "skill": "listening", "part": 1, "audioRef": "audio-p1",
+      "questionType": "matching", "primitive": "matching",
+      "questionNumbers": [7, 8, 9, 10], "points": 4, "difficultyCEFR": "B1",
+      "instructions": "What rule applies to each class? Choose the correct letter, A, B or C. You may use any letter more than once.",
+      "reusableOptions": true,
+      "options": [
+        { "key": "A", "text": "suitable for complete beginners" },
+        { "key": "B", "text": "must be booked a day in advance" },
+        { "key": "C", "text": "included free with membership" }
+      ],
+      "prompts": [
+        { "n": 7, "text": "Yoga" },
+        { "n": 8, "text": "Spinning" },
+        { "n": 9, "text": "Pilates" },
+        { "n": 10, "text": "Aqua aerobics" }
+      ],
+      "answerKey": { "7": "A", "8": "B", "9": "B", "10": "C" }
+    },
+    {
+      "id": "L-p2-map",
+      "skill": "listening", "part": 2, "audioRef": "audio-p2",
+      "questionType": "plan_map_diagram_labelling", "primitive": "labelling",
+      "questionNumbers": [11, 12, 13, 14, 15], "points": 5, "difficultyCEFR": "B1",
+      "instructions": "Label the map of Marsh View Wetlands Reserve below. Choose the correct letter, A to H, for each feature.",
+      "imageRef": "asset:p2-map (gerar a partir de mapDescription)",
+      "mapDescription": "Mapa simples do reserva. Portao principal no centro-inferior (sul). Caminho sobe para o norte. Posicoes marcadas A a H: A = logo a esquerda do portao; B = em frente ao portao, ao centro; C = topo (norte); D = topo a direita; E = lado oeste, junto ao lago; F = lado leste; G = canto sudeste; H = centro. Lago no oeste. Respostas pretendidas: Visitor Centre=B, Cafe=A, Bird Hide=C, Pond-dipping platform=E, Picnic area=G.",
+      "options": ["A", "B", "C", "D", "E", "F", "G", "H"],
+      "prompts": [
+        { "n": 11, "text": "Visitor Centre" },
+        { "n": 12, "text": "Cafe" },
+        { "n": 13, "text": "Bird Hide" },
+        { "n": 14, "text": "Pond-dipping platform" },
+        { "n": 15, "text": "Picnic area" }
+      ],
+      "answerKey": { "11": "B", "12": "A", "13": "C", "14": "E", "15": "G" }
+    },
+    {
+      "id": "L-p2-mcq",
+      "skill": "listening", "part": 2, "audioRef": "audio-p2",
+      "questionType": "multiple_choice_single", "primitive": "single_select",
+      "questionNumbers": [16, 17, 18], "points": 3, "difficultyCEFR": "B1",
+      "instructions": "Choose the correct letter, A, B or C.",
+      "questions": [
+        {
+          "n": 16, "stem": "What should volunteers bring on their first day?",
+          "options": [{ "key": "A", "text": "waterproof clothing" }, { "key": "B", "text": "their own lunch" }, { "key": "C", "text": "gardening gloves" }],
+          "answer": "A"
+        },
+        {
+          "n": 17, "stem": "What is the main activity this season?",
+          "options": [{ "key": "A", "text": "planting trees" }, { "key": "B", "text": "clearing paths" }, { "key": "C", "text": "counting birds" }],
+          "answer": "C"
+        },
+        {
+          "n": 18, "stem": "What happens if it rains heavily?",
+          "options": [{ "key": "A", "text": "the session is cancelled" }, { "key": "B", "text": "volunteers move indoors" }, { "key": "C", "text": "the session continues outside as normal" }],
+          "answer": "B"
+        }
+      ]
+    },
+    {
+      "id": "L-p2-multi",
+      "skill": "listening", "part": 2, "audioRef": "audio-p2",
+      "questionType": "multiple_choice_multi", "primitive": "multi_select",
+      "questionNumbers": [19, 20], "points": 2, "difficultyCEFR": "B1",
+      "instructions": "Which TWO facilities are closed this week? Choose TWO letters, A to E.",
+      "chooseCount": 2,
+      "options": [
+        { "key": "A", "text": "the cafe" },
+        { "key": "B", "text": "the bird hide" },
+        { "key": "C", "text": "the toilets by the entrance" },
+        { "key": "D", "text": "the car park" },
+        { "key": "E", "text": "the shop" }
+      ],
+      "answerKey": ["C", "E"]
+    },
+    {
+      "id": "L-p3-mcq",
+      "skill": "listening", "part": 3, "audioRef": "audio-p3",
+      "questionType": "multiple_choice_single", "primitive": "single_select",
+      "questionNumbers": [21, 22, 23, 24, 25], "points": 5, "difficultyCEFR": "B2",
+      "instructions": "Choose the correct letter, A, B or C.",
+      "questions": [
+        {
+          "n": 21, "stem": "Why did the students choose their topic?",
+          "options": [{ "key": "A", "text": "It was the easiest option." }, { "key": "B", "text": "It is currently in the local news." }, { "key": "C", "text": "The tutor recommended it." }],
+          "answer": "B"
+        },
+        {
+          "n": 22, "stem": "What was the problem with their data?",
+          "options": [{ "key": "A", "text": "There were too few responses." }, { "key": "B", "text": "The responses were contradictory." }, { "key": "C", "text": "They lost some of the responses." }],
+          "answer": "A"
+        },
+        {
+          "n": 23, "stem": "What did the tutor suggest?",
+          "options": [{ "key": "A", "text": "running the survey again" }, { "key": "B", "text": "combining the survey with council data" }, { "key": "C", "text": "dropping the survey altogether" }],
+          "answer": "B"
+        },
+        {
+          "n": 24, "stem": "What will they change about the introduction?",
+          "options": [{ "key": "A", "text": "add more background" }, { "key": "B", "text": "move it to the end" }, { "key": "C", "text": "make it shorter" }],
+          "answer": "C"
+        },
+        {
+          "n": 25, "stem": "How does Mia feel about the deadline?",
+          "options": [{ "key": "A", "text": "anxious about the time left" }, { "key": "B", "text": "confident they have enough time" }, { "key": "C", "text": "unsure whether to ask for an extension" }],
+          "answer": "B"
+        }
+      ]
+    },
+    {
+      "id": "L-p3-matching",
+      "skill": "listening", "part": 3, "audioRef": "audio-p3",
+      "questionType": "matching", "primitive": "matching",
+      "questionNumbers": [26, 27, 28, 29, 30], "points": 5, "difficultyCEFR": "B2",
+      "instructions": "What does Tom say about each source? Choose the correct letter, A, B or C. You may use any letter more than once.",
+      "reusableOptions": true,
+      "options": [
+        { "key": "A", "text": "clear and useful" },
+        { "key": "B", "text": "too detailed" },
+        { "key": "C", "text": "out of date" }
+      ],
+      "prompts": [
+        { "n": 26, "text": "the textbook" },
+        { "n": 27, "text": "the government report" },
+        { "n": 28, "text": "the journal article" },
+        { "n": 29, "text": "the website" },
+        { "n": 30, "text": "the documentary" }
+      ],
+      "answerKey": { "26": "A", "27": "B", "28": "A", "29": "C", "30": "C" }
+    },
+    {
+      "id": "L-p4-notes",
+      "skill": "listening", "part": 4, "audioRef": "audio-p4",
+      "questionType": "note_completion", "primitive": "gap_fill",
+      "questionNumbers": [31, 32, 33, 34, 35, 36, 37, 38, 39, 40], "points": 10, "difficultyCEFR": "B2",
+      "instructions": "Complete the notes below. Write NO MORE THAN TWO WORDS for each answer.",
+      "wordLimit": { "maxWords": 2, "allowNumber": false },
+      "template": "Bioluminescence: light made by living organisms\nKey ingredients:\n- a molecule called {{31}}\n- an enzyme called {{32}}\nIt is a \"cold light\" because it produces almost no {{33}}.\nMost species live in the {{34}}.\nThree main functions:\n- attracting {{35}} (e.g. the anglerfish)\n- {{36}} against predators\n- finding a {{37}}\nFireflies: each species has its own pattern of {{38}}.\nSome squid release glowing liquid to {{39}} attackers.\nIn science, the glow is used as a {{40}} to track processes in living tissue.",
+      "gaps": [
+        { "n": 31, "accepted": ["luciferin"] },
+        { "n": 32, "accepted": ["luciferase"] },
+        { "n": 33, "accepted": ["heat"] },
+        { "n": 34, "accepted": ["ocean", "the ocean", "deep sea", "sea"] },
+        { "n": 35, "accepted": ["prey"] },
+        { "n": 36, "accepted": ["defence", "defense"] },
+        { "n": 37, "accepted": ["mate", "partner"] },
+        { "n": 38, "accepted": ["flashes", "flashing"] },
+        { "n": 39, "accepted": ["confuse"] },
+        { "n": 40, "accepted": ["marker", "tag", "label"] }
+      ]
+    }
+  ],
+
+  "audioProductionNotes": {
+    "engine": "Reproducao unica, sem pausar nem retroceder. O front-end controla as previas de 30s entre grupos de questoes e os 2 minutos finais de revisao.",
+    "approach": "Transcripts aqui contem so o conteudo falado. As instrucoes padrao ('Before you listen, look at questions 1 to 6') e as pausas podem ser inseridas pelo engine como silencio + timer na tela, ou sintetizadas junto.",
+    "tts": "Google Cloud TTS encaixa bem (voz distinta por personagem, SSML para ritmo e pausas, com cache dos audios gerados). Usar vozes diferentes por speaker nas Parts 1 e 3. Alternativa de maior fidelidade: gravar locutores humanos.",
+    "accents": "IELTS mistura sotaques nativos. Sugestao: Part 1 britanico, Part 2 australiano, Part 3 britanico + norte-americano, Part 4 britanico.",
+    "spelledItem": "Na Part 1, soletrar o item do exemplo ao vivo (M-I-L-L) para fidelidade; nao e pontuado.",
+    "assetsPendentes": ["audio dos 4 parts", "imagem do mapa da Part 2 (a partir de mapDescription, com posicoes A a H)"]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "seed": "node scripts/seed.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.2"
+  }
+}

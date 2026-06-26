@@ -1,0 +1,308 @@
+{
+  "paper": {
+    "id": "ielts-academic-paper-01",
+    "exam": "ielts_academic",
+    "title": "Simulado IELTS Academic 01",
+    "notes": "Conteudo autoral e original. Nao reproduz questoes reais. Reading, Writing e Speaking completas. Listening pendente (proxima instalacao: transcripts + audio).",
+    "sections": [
+      { "skill": "reading", "durationSeconds": 3600, "passageIds": ["p1", "p2", "p3"], "questionNumbers": "1-40", "status": "complete" },
+      { "skill": "writing", "durationSeconds": 3600, "itemIds": ["W1", "W2"], "status": "complete" },
+      { "skill": "speaking", "estimatedSeconds": 840, "itemIds": ["S1", "S2", "S3"], "status": "complete" },
+      { "skill": "listening", "status": "pending", "todo": "4 transcripts autorais + geracao de audio (play unico) + 40 itens" }
+    ]
+  },
+
+  "rubrics": {
+    "writing_task1": ["Task Achievement", "Coherence and Cohesion", "Lexical Resource", "Grammatical Range and Accuracy"],
+    "writing_task2": ["Task Response", "Coherence and Cohesion", "Lexical Resource", "Grammatical Range and Accuracy"],
+    "speaking": ["Fluency and Coherence", "Lexical Resource", "Grammatical Range and Accuracy", "Pronunciation"],
+    "note": "Os descritores completos por banda (0 a 9) ficam em uma tabela separada e sao enviados a Edge Function de correcao. Aqui ficam apenas os nomes dos criterios."
+  },
+
+  "passages": [
+    {
+      "id": "p1",
+      "title": "The Story of the Pineapple",
+      "level": "B1-B2",
+      "paragraphs": [
+        "Few fruits have travelled as far, or risen as high in status, as the pineapple. Although today it is sold cheaply in supermarkets around the world, its journey from a wild plant to a global symbol of luxury took several centuries.",
+        "The pineapple is native to South America, in the region between southern Brazil and Paraguay. Long before any European set foot in the Americas, indigenous peoples had already cultivated the fruit and carried it northwards, spreading it across much of South and Central America.",
+        "Europeans first encountered the pineapple in 1493, when Christopher Columbus and his crew landed on the Caribbean island of Guadeloupe and were offered the strange fruit by the local people. They carried it back to Europe, where it caused a sensation.",
+        "The problem was that the pineapple was almost impossible to grow in the cold European climate. For around two hundred years it remained extraordinarily rare, and therefore extraordinarily expensive. Only the very wealthy could obtain one, and it quickly became a symbol of hospitality and social standing.",
+        "By the seventeenth and eighteenth centuries, rich landowners were competing to grow their own fruit in specially heated glasshouses known as pineries. The cost of producing a single pineapple this way was enormous. So great was its value that some people did not eat their fruit at all: instead they rented a pineapple to display at a dinner party, returning it afterwards so that it could be hired out again.",
+        "The fruit's prestige spread into design. Carved pineapple motifs began to appear on gateposts, furniture and buildings, where they signalled welcome and generosity to visitors.",
+        "The pineapple only became an everyday fruit much later. In the late nineteenth and early twentieth centuries, large commercial plantations were established in warm regions, most famously in Hawaii. The development of canning meant the fruit could be preserved and shipped cheaply, and within a few decades the once priceless pineapple had become available to almost everyone."
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "The Return of the Urban Beehive",
+      "level": "B2",
+      "paragraphs": [
+        { "key": "A", "text": "Across many parts of the world, bee populations have been falling, threatened by disease, pesticides and the loss of wild habitat. As awareness of this decline has grown, an unexpected response has taken hold in towns and cities: urban beekeeping. Once dismissed as an eccentric hobby, keeping hives on rooftops, balconies and in community gardens has become increasingly popular, and city authorities that once banned the practice are now beginning to encourage it." },
+        { "key": "B", "text": "What surprises many people is that bees often do well in cities. Dr Lena Hoffmann, who studies pollinators in Berlin, has found that urban hives can be as productive as rural ones, and sometimes more so. Cities, she explains, offer an unusually varied supply of flowering plants across parks, gardens and street trees, so that something is almost always in bloom. City bees are also exposed to fewer agricultural chemicals than those living beside large monoculture farms, and the warmth of the built environment can extend the season in which they are active." },
+        { "key": "C", "text": "The benefits of urban hives reach well beyond honey. In Toronto, a project led by Ravi Menon showed that hives placed in community gardens improved the pollination of nearby vegetable plots and helped support local biodiversity. Just as importantly, Menon argued, the projects drew neighbours together: people who had never spoken began meeting to tend the hives, and beekeeping became a tool for community engagement and education about the natural world." },
+        { "key": "D", "text": "Not everyone is convinced that more hives are always better. Some scientists warn that introducing large numbers of honeybees into a small area can leave too little forage for wild bees and other insects, which may then decline. In Paris, where rooftop hives became fashionable, Claire Dubois cautioned that adding colonies without limit could damage the very pollinators that cities were trying to protect, and called for the number of hives to be controlled." },
+        { "key": "E", "text": "The likely future, most experts agree, is one of careful balance rather than unlimited growth. Cities are beginning to set guidelines so that beekeeping can continue without harming wild species. A typical approved scheme asks newcomers first to complete a short training course, and then to register each hive with the local council. Keepers are advised to position hives close to good sources of forage, and to have every colony inspected for disease once a year." }
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Why We Procrastinate",
+      "level": "B2-C1",
+      "paragraphs": [
+        "For a long time, procrastination was thought to be a problem of poor time management, or simply a sign of laziness. If only people planned better, the argument went, or showed more willpower, they would stop putting things off. Recent research suggests that this view is largely mistaken.",
+        "Psychologists now describe procrastination as a problem of emotion regulation rather than of organisation. When a task makes us feel anxious, bored or inadequate, we look for relief, and the quickest way to feel better is to turn to something more pleasant. Checking a phone or tidying a desk repairs our mood in the short term, even though it does nothing to address the task itself. In other words, we procrastinate to escape an unpleasant feeling, not because we cannot manage our time.",
+        "This helps explain a curious feature of the behaviour. We often delay even when we know that delay will cost us dearly. The reason, researchers suggest, is that the part of the brain that seeks immediate comfort tends to win out over the part that plans for the future. The present self enjoys the relief of avoidance now, while the consequences are left to a future self who can feel almost like a different person, a stranger whose suffering does not quite touch us.",
+        "If procrastination is driven by emotion, then the usual advice to plan more carefully may miss the point. One striking study followed students preparing for exams. Those who managed to forgive themselves for procrastinating before an earlier exam were less likely to procrastinate before the next one. Letting go of guilt, it seemed, removed some of the negative feeling attached to the task, making it easier to begin.",
+        "This points to a wider truth. Harsh self-criticism, far from motivating us, can make matters worse: the worse we feel about a task, the more we want to avoid it, and so the cycle continues. Self-compassion, by contrast, appears to break it.",
+        "Practical strategies follow naturally from this understanding. Because the hardest moment is usually the act of starting, it helps to reduce a task to a small, manageable first step, one so minor that it provokes little anxiety. Once begun, the task rarely feels as threatening as it did in prospect.",
+        "Finally, it is worth questioning a popular belief: that working under pressure brings out our best. Many people insist they perform better at the last minute. The evidence does not support this. While a looming deadline can certainly force us to act, the work produced in a panic is rarely as good as work done with time to reflect, and the stress involved carries its own costs."
+      ]
+    }
+  ],
+
+  "items": [
+    {
+      "id": "R-p1-tfng",
+      "skill": "reading", "part": 1, "passageRef": "p1",
+      "questionType": "true_false_notgiven", "primitive": "single_select",
+      "questionNumbers": [1, 2, 3, 4, 5, 6], "points": 6, "difficultyCEFR": "B1",
+      "instructions": "Do the following statements agree with the information in the passage? Write TRUE, FALSE or NOT GIVEN.",
+      "options": ["TRUE", "FALSE", "NOT_GIVEN"],
+      "questions": [
+        { "n": 1, "statement": "The pineapple originally grew wild in North America.", "answer": "FALSE" },
+        { "n": 2, "statement": "Indigenous peoples had spread the pineapple across the continent before Europeans saw it.", "answer": "TRUE" },
+        { "n": 3, "statement": "Columbus first saw the pineapple on the South American mainland.", "answer": "FALSE" },
+        { "n": 4, "statement": "Pineapples were easy to grow in the European climate.", "answer": "FALSE" },
+        { "n": 5, "statement": "Some wealthy people displayed pineapples without eating them.", "answer": "TRUE" },
+        { "n": 6, "statement": "The pineapple was the most expensive fruit ever sold in Europe.", "answer": "NOT_GIVEN" }
+      ]
+    },
+    {
+      "id": "R-p1-notes",
+      "skill": "reading", "part": 1, "passageRef": "p1",
+      "questionType": "note_completion", "primitive": "gap_fill",
+      "questionNumbers": [7, 8, 9, 10, 11, 12, 13], "points": 7, "difficultyCEFR": "B2",
+      "instructions": "Complete the notes below. Choose NO MORE THAN TWO WORDS AND/OR A NUMBER from the passage for each answer.",
+      "wordLimit": { "maxWords": 2, "allowNumber": true },
+      "template": "Origins: native to South America, between southern Brazil and {{7}}.\nBrought to Europe by Columbus after landing on the island of {{8}} in 1493.\nIn Europe, seen as a symbol of {{9}} and social standing.\nGrown by the rich in heated glasshouses called {{10}}.\nSo valuable that some people {{11}} the fruit to display at parties.\nThe pineapple motif was used in {{12}} to signal welcome.\nMass production later began on plantations in {{13}}, made cheap by canning.",
+      "gaps": [
+        { "n": 7, "accepted": ["Paraguay"] },
+        { "n": 8, "accepted": ["Guadeloupe"] },
+        { "n": 9, "accepted": ["hospitality"] },
+        { "n": 10, "accepted": ["pineries", "pinery"] },
+        { "n": 11, "accepted": ["rented", "hired"] },
+        { "n": 12, "accepted": ["design"] },
+        { "n": 13, "accepted": ["Hawaii"] }
+      ]
+    },
+    {
+      "id": "R-p2-headings",
+      "skill": "reading", "part": 2, "passageRef": "p2",
+      "questionType": "matching_headings", "primitive": "matching",
+      "questionNumbers": [14, 15, 16, 17, 18], "points": 5, "difficultyCEFR": "B2",
+      "instructions": "The passage has five paragraphs, A to E. Choose the correct heading for each paragraph from the list of headings.",
+      "reusableOptions": false,
+      "options": [
+        { "key": "i", "text": "The risk of overcrowding the cities" },
+        { "key": "ii", "text": "How city life can suit bees" },
+        { "key": "iii", "text": "A long tradition under threat" },
+        { "key": "iv", "text": "Why interest in city bees has grown" },
+        { "key": "v", "text": "Looking ahead with caution" },
+        { "key": "vi", "text": "Advantages beyond honey" },
+        { "key": "vii", "text": "The economics of selling honey" },
+        { "key": "viii", "text": "Choosing the right species" }
+      ],
+      "prompts": [
+        { "key": "A", "n": 14 },
+        { "key": "B", "n": 15 },
+        { "key": "C", "n": 16 },
+        { "key": "D", "n": 17 },
+        { "key": "E", "n": 18 }
+      ],
+      "answerKey": { "14": "iv", "15": "ii", "16": "vi", "17": "i", "18": "v" }
+    },
+    {
+      "id": "R-p2-features",
+      "skill": "reading", "part": 2, "passageRef": "p2",
+      "questionType": "matching_features", "primitive": "matching",
+      "questionNumbers": [19, 20, 21, 22], "points": 4, "difficultyCEFR": "B2",
+      "instructions": "Look at the following statements and the list of researchers. Match each statement with the correct researcher, A, B or C. You may use any letter more than once.",
+      "reusableOptions": true,
+      "options": [
+        { "key": "A", "text": "Lena Hoffmann" },
+        { "key": "B", "text": "Ravi Menon" },
+        { "key": "C", "text": "Claire Dubois" }
+      ],
+      "prompts": [
+        { "n": 19, "statement": "found that city bees encounter fewer farming chemicals" },
+        { "n": 20, "statement": "warned that too many hives could harm wild pollinators" },
+        { "n": 21, "statement": "showed that hives improved the pollination of nearby plots" },
+        { "n": 22, "statement": "linked beekeeping to bringing a community together" }
+      ],
+      "answerKey": { "19": "A", "20": "C", "21": "B", "22": "B" }
+    },
+    {
+      "id": "R-p2-flowchart",
+      "skill": "reading", "part": 2, "passageRef": "p2",
+      "questionType": "flowchart_completion", "primitive": "gap_fill",
+      "questionNumbers": [23, 24, 25, 26], "points": 4, "difficultyCEFR": "B2",
+      "instructions": "Complete the flow-chart below. Choose ONE WORD ONLY from the passage for each answer.",
+      "wordLimit": { "maxWords": 1, "allowNumber": false },
+      "template": "Joining an approved urban beekeeping scheme:\nStep 1: Complete a short {{23}} course.\nStep 2: Register each hive with the local {{24}}.\nStep 3: Place hives near good sources of {{25}}.\nStep 4: Have each colony checked for {{26}} once a year.",
+      "gaps": [
+        { "n": 23, "accepted": ["training"] },
+        { "n": 24, "accepted": ["council", "authority"] },
+        { "n": 25, "accepted": ["forage"] },
+        { "n": 26, "accepted": ["disease"] }
+      ]
+    },
+    {
+      "id": "R-p3-ynng",
+      "skill": "reading", "part": 3, "passageRef": "p3",
+      "questionType": "yes_no_notgiven", "primitive": "single_select",
+      "questionNumbers": [27, 28, 29, 30, 31, 32], "points": 6, "difficultyCEFR": "C1",
+      "instructions": "Do the following statements agree with the claims of the writer? Write YES, NO or NOT GIVEN.",
+      "options": ["YES", "NO", "NOT_GIVEN"],
+      "questions": [
+        { "n": 27, "statement": "Procrastination is mainly caused by poor time management.", "answer": "NO" },
+        { "n": 28, "statement": "People put off tasks in order to avoid unpleasant emotions.", "answer": "YES" },
+        { "n": 29, "statement": "The future self can feel like a different person.", "answer": "YES" },
+        { "n": 30, "statement": "Procrastinators are less intelligent than other people.", "answer": "NOT_GIVEN" },
+        { "n": 31, "statement": "Forgiving yourself for procrastinating can reduce it later.", "answer": "YES" },
+        { "n": 32, "statement": "Working under pressure reliably improves the quality of work.", "answer": "NO" }
+      ]
+    },
+    {
+      "id": "R-p3-mcq",
+      "skill": "reading", "part": 3, "passageRef": "p3",
+      "questionType": "multiple_choice_single", "primitive": "single_select",
+      "questionNumbers": [33, 34, 35, 36], "points": 4, "difficultyCEFR": "C1",
+      "instructions": "Choose the correct letter, A, B, C or D.",
+      "questions": [
+        {
+          "n": 33, "stem": "According to the writer, the main cause of procrastination is",
+          "options": [{ "key": "A", "text": "laziness." }, { "key": "B", "text": "having too many tasks." }, { "key": "C", "text": "the wish to relieve an unpleasant feeling." }, { "key": "D", "text": "a lack of planning skills." }],
+          "answer": "C"
+        },
+        {
+          "n": 34, "stem": "The present self is described as",
+          "options": [{ "key": "A", "text": "seeking immediate comfort at the expense of the future." }, { "key": "B", "text": "focused on long-term goals." }, { "key": "C", "text": "unaffected by emotion." }, { "key": "D", "text": "better at planning than the future self." }],
+          "answer": "A"
+        },
+        {
+          "n": 35, "stem": "The study of students found that those who forgave themselves",
+          "options": [{ "key": "A", "text": "felt more guilt afterwards." }, { "key": "B", "text": "procrastinated less before the next exam." }, { "key": "C", "text": "performed worse in their exams." }, { "key": "D", "text": "stopped studying altogether." }],
+          "answer": "B"
+        },
+        {
+          "n": 36, "stem": "The writer suggests that the best way to start a task is to",
+          "options": [{ "key": "A", "text": "plan it in great detail." }, { "key": "B", "text": "wait for a deadline." }, { "key": "C", "text": "break it into a very small first step." }, { "key": "D", "text": "criticise oneself for delaying." }],
+          "answer": "C"
+        }
+      ]
+    },
+    {
+      "id": "R-p3-sentence-endings",
+      "skill": "reading", "part": 3, "passageRef": "p3",
+      "questionType": "matching_sentence_endings", "primitive": "matching",
+      "questionNumbers": [37, 38, 39, 40], "points": 4, "difficultyCEFR": "C1",
+      "instructions": "Complete each sentence with the correct ending, A to F.",
+      "reusableOptions": false,
+      "options": [
+        { "key": "A", "text": "is sometimes experienced as almost a stranger." },
+        { "key": "B", "text": "can make us even more likely to put things off." },
+        { "key": "C", "text": "tend to turn to a more pleasant activity for relief." },
+        { "key": "D", "text": "reduce the task to a small, easy first step." },
+        { "key": "E", "text": "guarantees that the work will be finished on time." },
+        { "key": "F", "text": "proves that pressure improves performance." }
+      ],
+      "prompts": [
+        { "n": 37, "stem": "When a task makes us feel anxious or bored, we" },
+        { "n": 38, "stem": "The future self" },
+        { "n": 39, "stem": "Criticising ourselves harshly after delaying" },
+        { "n": 40, "stem": "A practical way to overcome procrastination is to" }
+      ],
+      "answerKey": { "37": "C", "38": "A", "39": "B", "40": "D" }
+    },
+
+    {
+      "id": "W1",
+      "skill": "writing", "part": 1,
+      "questionType": "writing_task", "primitive": "free_text",
+      "taskType": "task1_visual", "points": null, "difficultyCEFR": "B2",
+      "minWords": 150, "rubricRef": "writing_task1",
+      "instructions": "You should spend about 20 minutes on this task. Write at least 150 words.",
+      "prompt": "The chart below shows the percentage of households in one European country that owned three types of electronic device in 2005, 2012 and 2019. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "imageRef": "asset:w1-chart (gerar a partir de chartData)",
+      "chartData": {
+        "type": "grouped_bar",
+        "unit": "percentage of households",
+        "years": [2005, 2012, 2019],
+        "series": {
+          "Desktop computer": [62, 55, 38],
+          "Smartphone": [9, 64, 91],
+          "Tablet": [0, 22, 57]
+        }
+      },
+      "modelAnswerBand8": "The chart compares the proportion of households owning desktop computers, smartphones and tablets in a European country at three points between 2005 and 2019. Overall, ownership of smartphones and tablets rose sharply across the period, while desktop computers became steadily less common. In 2005, the desktop computer was the most widely owned device, found in 62 per cent of households, compared with just 9 per cent for smartphones. Tablets were not yet owned at all. By 2012, the picture had changed dramatically: smartphone ownership had surged to 64 per cent, overtaking desktops, which had slipped to 55 per cent. Tablets, meanwhile, had appeared in 22 per cent of homes. This trend accelerated by 2019. Smartphones were almost universal at 91 per cent, and tablets had climbed to 57 per cent, while desktop ownership had fallen further to only 38 per cent. In short, portable devices had largely displaced the desktop computer over the fourteen-year period."
+    },
+    {
+      "id": "W2",
+      "skill": "writing", "part": 2,
+      "questionType": "writing_task", "primitive": "free_text",
+      "taskType": "task2_essay", "points": null, "difficultyCEFR": "C1",
+      "minWords": 250, "rubricRef": "writing_task2",
+      "instructions": "You should spend about 40 minutes on this task. Write at least 250 words. Task 2 carries more weight than Task 1.",
+      "prompt": "Some people believe that university education should be free for all students. Others argue that students should pay for their own studies. Discuss both views and give your own opinion.",
+      "modelAnswerBand8": "Whether higher education should be funded by the state or paid for by students is a question that divides opinion. Both positions have merit, and I believe the fairest answer lies in a balance between them. Those who argue for free university education stress its social benefits. When tuition is free, talented students from poorer families are not shut out by cost, which widens access and allows society to draw on the full range of its talent. A well-educated population, supporters add, produces doctors, engineers and teachers whose skills benefit everyone, so the public investment is repaid many times over. On the other side, many argue that students should contribute to the cost of their own studies. University is a personal investment that raises future earnings, so it seems reasonable that those who gain should help to pay. Furthermore, free education is expensive, and the money has to come from somewhere; taxpayers who never attend university may resent funding the degrees of others. Charging fees, supporters claim, also encourages students to take their studies seriously. In my view, neither extreme is ideal. A purely free system places a heavy burden on the state, while full fees risk excluding the poor. A sensible compromise is a system in which the government covers most of the cost but students repay a modest, income-linked contribution once they are earning. This protects access while sharing the cost fairly. In conclusion, although both views are reasonable, a partly subsidised model that keeps university open to all seems the most balanced solution."
+    },
+
+    {
+      "id": "S1",
+      "skill": "speaking", "part": 1,
+      "questionType": "speaking_task", "primitive": "spoken_response",
+      "taskType": "part1", "rubricRef": "speaking", "difficultyCEFR": "B1-B2",
+      "talkSeconds": 240,
+      "instructions": "The examiner asks general questions about you and familiar topics. Answer naturally.",
+      "prompts": [
+        "Let's talk about where you live. Do you live in a house or an apartment?",
+        "What do you like most about the place where you live?",
+        "Now let's talk about free time. What do you usually do in the evenings?",
+        "Has the way you spend your free time changed in recent years?",
+        "Do you prefer spending time alone or with other people? Why?"
+      ]
+    },
+    {
+      "id": "S2",
+      "skill": "speaking", "part": 2,
+      "questionType": "speaking_task", "primitive": "spoken_response",
+      "taskType": "part2_cue_card", "rubricRef": "speaking", "difficultyCEFR": "B2",
+      "prepSeconds": 60, "talkSeconds": 120,
+      "instructions": "You will have one minute to prepare. Then speak for one to two minutes. You can make notes during the preparation time.",
+      "prompts": [
+        "Describe a skill you would like to learn. You should say:",
+        "what the skill is",
+        "why you want to learn it",
+        "how you would go about learning it",
+        "and explain how this skill would be useful to you."
+      ]
+    },
+    {
+      "id": "S3",
+      "skill": "speaking", "part": 3,
+      "questionType": "speaking_task", "primitive": "spoken_response",
+      "taskType": "part3", "rubricRef": "speaking", "difficultyCEFR": "C1",
+      "talkSeconds": 300,
+      "instructions": "The examiner asks more abstract questions connected to the topic in Part 2.",
+      "prompts": [
+        "Why do you think some people find it harder than others to learn new skills?",
+        "Do you think schools focus too much on academic subjects and not enough on practical skills?",
+        "How has technology changed the way people learn new things?",
+        "Some people say that certain skills will disappear because machines can do them. Do you agree?",
+        "Is it ever too late for someone to learn a completely new skill? Why or why not?"
+      ]
+    }
+  ]
+}

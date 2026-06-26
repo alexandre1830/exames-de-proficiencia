@@ -1,0 +1,15 @@
+# Dependencias
+node_modules/
+
+# Ambiente / segredos (nunca commitar service role, chaves de IA, admin secret)
+.env
+.env.*
+*.local
+
+# Supabase CLI
+.branches/
+.temp/
+
+# Sistema
+.DS_Store
+Thumbs.db
