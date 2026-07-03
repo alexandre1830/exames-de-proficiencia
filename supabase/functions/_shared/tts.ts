@@ -52,6 +52,11 @@ export async function synthesize(
   if (hit) return { url: hit.public_url, cached: true };
 
   // 2. Miss -> Google (unico ponto de cobranca).
+  // Vozes Chirp 3 nao aceitam pitch (o Google rejeita); omitimos nesse caso.
+  const isChirp = /chirp/i.test(voiceName);
+  const audioConfig: Record<string, unknown> = { audioEncoding, speakingRate };
+  if (!isChirp) audioConfig.pitch = pitch;
+
   const ttsRes = await fetch(
     `https://texttospeech.googleapis.com/v1/text:synthesize?key=${googleKey}`,
     {
@@ -60,7 +65,7 @@ export async function synthesize(
       body: JSON.stringify({
         input: isSsml ? { ssml: content } : { text: content },
         voice: { languageCode, name: voiceName },
-        audioConfig: { audioEncoding, speakingRate, pitch },
+        audioConfig,
       }),
     },
   );

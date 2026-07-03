@@ -9,21 +9,23 @@ const supabase = makeClient();
 
 const DEFAULT_PAUSE_MS = 400;
 
-// Vozes Studio (tier de maxima qualidade do Google TTS). Studio so existe para
-// en-US e en-GB, entao a Part 2 (antes AU) usa US Studio para manter variedade de
-// sotaque nativo (GB + US). Resolucao por parte + rotulo: o rotulo "M" e masculino
-// na Part 1 (Caller) mas feminino na Part 3 (Mia), por isso nao basta um mapa plano.
+// Vozes Chirp 3 HD (tier mais recente e natural do Google TTS). Disponivel em
+// en-US, en-GB e en-AU, entao mantemos os sotaques nativos do blueprint.
+// Voz DISTINTA por personagem sempre que a parte tem mais de um falante.
+// Resolucao por parte + rotulo: o rotulo "M" e masculino na Part 1 (Caller) mas
+// feminino na Part 3 (Mia), por isso nao basta um mapa plano.
 const V = {
-  gbF: { languageCode: "en-GB", voiceName: "en-GB-Studio-C" }, // feminina britanica
-  gbM: { languageCode: "en-GB", voiceName: "en-GB-Studio-B" }, // masculina britanica
-  usF: { languageCode: "en-US", voiceName: "en-US-Studio-O" }, // feminina americana
-  usM: { languageCode: "en-US", voiceName: "en-US-Studio-Q" }, // masculina americana
+  gbF:  { languageCode: "en-GB", voiceName: "en-GB-Chirp3-HD-Kore" },   // feminina GB
+  gbM:  { languageCode: "en-GB", voiceName: "en-GB-Chirp3-HD-Charon" }, // masculina GB
+  gbF2: { languageCode: "en-GB", voiceName: "en-GB-Chirp3-HD-Aoede" },  // feminina GB (2)
+  auM:  { languageCode: "en-AU", voiceName: "en-AU-Chirp3-HD-Charon" }, // masculina AU
+  usM:  { languageCode: "en-US", voiceName: "en-US-Chirp3-HD-Fenrir" }, // masculina US
 };
 const VOICES_BY_PART: Record<number, Record<string, typeof V.gbF>> = {
-  1: { R: V.gbF, M: V.gbM },          // recepcionista (F) + caller (M)
-  2: { G: V.usM },                    // coordenador (monologo)
-  3: { M: V.gbF, T: V.usM },          // Mia (F, GB) + Tom (M, US)
-  4: { L: V.gbF },                    // palestrante (F)
+  1: { R: V.gbF, M: V.gbM },           // recepcionista (F) + caller (M)  -> 2 vozes
+  2: { G: V.auM },                     // coordenador (monologo, AU)
+  3: { M: V.gbF2, T: V.usM },          // Mia (F, GB) + Tom (M, US)       -> 2 vozes
+  4: { L: V.gbF },                     // palestrante (F)
 };
 const FALLBACK_VOICE = V.gbF;
 
@@ -47,7 +49,7 @@ Deno.serve(async (req) => {
     if (!paperId) return Response.json({ error: "paperId obrigatorio" }, { status: 400 });
 
     const { data: audios, error } = await supabase
-      .from("audios").select("id, transcript")
+      .from("audios").select("id, part, transcript")
       .eq("paper_id", paperId).order("part");
     if (error) return Response.json({ error: error.message }, { status: 500 });
     if (!audios?.length) return Response.json({ error: "sem audios para a prova" }, { status: 404 });
