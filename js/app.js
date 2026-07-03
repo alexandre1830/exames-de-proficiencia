@@ -4,6 +4,7 @@ import { DEFAULT_PAPER_ID } from "./config.js";
 import { loadPaper, createAttempt, submitSection, finalizeAttempt, uploadSpeaking } from "./api.js";
 import { rendererFor } from "./render/index.js";
 import { ListeningPlayer } from "./player/listening-player.js";
+import { createPager } from "./pager.js";
 import { el } from "./render/dom.js";
 import { renderResults } from "./results.js";
 import {
@@ -105,13 +106,16 @@ class Exam {
       el("p", { class: "instructions", text: this.sectionInstructions(skill) }),
     ]));
 
-    if (skill === "reading") this.renderReading(items);
-    else this.renderStacked(items);
+    const pages = skill === "reading"
+      ? this.buildReadingPages(items)
+      : this.buildItemPages(items, (it) => (skill === "writing" ? `Task ${it.part}` : `Part ${it.part}`));
 
-    // Botao de avancar + timer da secao.
-    const next = el("button", { class: "btn btn--accent btn--lg", type: "button", onclick: () => this.submitCurrent() },
-      [this.index === this.sections.length - 1 ? "Finish and see results" : "Submit section"]);
-    this.main.append(el("div", { class: "section-foot" }, [next]));
+    const last = this.index === this.sections.length - 1;
+    this.pager = createPager(pages, {
+      onFinish: () => this.submitCurrent(),
+      finishLabel: last ? "Finish and see results" : "Submit section",
+    });
+    this.main.append(this.pager.root);
 
     const dur = meta.durationSeconds;
     if (dur) this.startTimer(dur);
@@ -124,42 +128,61 @@ class Exam {
     return "";
   }
 
-  renderReading(items) {
-    // Uma coluna por passagem: texto a esquerda, questoes a direita.
-    for (const passage of this.data.passages) {
+  // Uma pagina por passagem: texto a esquerda, questoes a direita.
+  buildReadingPages(items) {
+    const pages = [];
+    this.data.passages.forEach((passage, i) => {
       const passItems = items.filter((it) => it.passage_ref === passage.id);
-      if (!passItems.length) continue;
+      if (!passItems.length) return;
 
       const passEl = el("article", { class: "passage" }, [el("h3", { text: passage.title })]);
       for (const para of passage.paragraphs) {
         if (typeof para === "string") passEl.append(el("p", { text: para }));
         else passEl.append(el("p", { dataset: { key: para.key }, text: para.text }));
       }
-
       const qCol = el("div", { class: "questions" });
       for (const it of passItems) rendererFor(it.primitive).render(qCol, it);
 
-      this.main.append(el("section", { class: "split" }, [passEl, qCol]));
-    }
+      pages.push({ label: `Passage ${i + 1}`, node: el("section", { class: "split" }, [passEl, qCol]) });
+    });
+    return pages;
   }
 
-  renderStacked(items) {
-    const col = el("div", { class: "questions measure" });
-    for (const it of items) rendererFor(it.primitive).render(col, it);
-    this.main.append(col);
+  // Uma pagina por item (Writing task / Speaking part).
+  buildItemPages(items, labelFn) {
+    return items.map((it) => {
+      const node = el("div", { class: "questions measure" });
+      rendererFor(it.primitive).render(node, it);
+      return { label: labelFn(it), node };
+    });
+  }
+
+  // Agrupa itens por parte (Listening).
+  pagesByPart(items) {
+    const byPart = new Map();
+    for (const it of items) {
+      if (!byPart.has(it.part)) byPart.set(it.part, []);
+      byPart.get(it.part).push(it);
+    }
+    return [...byPart.entries()].sort((a, b) => a[0] - b[0]).map(([part, its]) => {
+      const node = el("div", { class: "questions" });
+      for (const it of its) rendererFor(it.primitive).render(node, it);
+      return { label: `Part ${part}`, node };
+    });
   }
 
   renderListening(items) {
-    this.player = new ListeningPlayer(this.data.audios, () => this.afterListeningAudio(items));
+    this.player = new ListeningPlayer(this.data.audios, () => this.afterListeningAudio());
     const stage = el("div", {});
-    this.main.append(stage);
-    this.player.mount(stage);
 
-    // As questoes ficam VISIVEIS durante todo o audio (como no IELTS real): o aluno
-    // le nas previas de 30s e responde enquanto ouve. A prova roda uma unica vez.
-    const qWrap = el("div", { class: "questions", style: "margin-top:2rem" });
-    for (const it of items) rendererFor(it.primitive).render(qWrap, it);
-    this.main.append(qWrap);
+    // Questoes paginadas por parte. A submissao e automatica (via player), entao o
+    // paginador e so de navegacao; o player vira a pagina ao mudar de parte.
+    const pages = this.pagesByPart(items);
+    this.pager = createPager(pages, { navOnly: true });
+    this.player.onPart = (i) => this.pager.show(i);
+
+    this.main.append(stage, el("div", { style: "margin-top:2rem" }, [this.pager.root]));
+    this.player.mount(stage);
   }
 
   afterListeningAudio() {

@@ -70,9 +70,11 @@ export class ListeningPlayer {
     this.viz.dataset.playing = "true";
 
     // Pre-carrega as urls da primeira parte (reproducao continua).
-    for (const audio of this.audios) {
+    for (let i = 0; i < this.audios.length; i++) {
+      const audio = this.audios[i];
       if (this.stopped) return;
       const part = audio.part;
+      this.onPart?.(i);   // vira a pagina de questoes para a parte atual
       this.setStatus(`Part ${part}: you have 30 seconds to read the questions.`);
       await this.sleep(PREVIEW_MS);
 
