@@ -66,10 +66,7 @@ export class ListeningPlayer {
     this.statusEl = el("p", { class: "player__status", "aria-live": "polite" });
 
     this.startBtn = el("button", { class: "btn btn--lg btn--accent", type: "button" }, ["Begin Listening"]);
-    this.startBtn.addEventListener("click", async () => {
-      await this.introModal();
-      this.play();
-    });
+    this.startBtn.addEventListener("click", () => this.play());
 
     ui.append(
       el("h2", { text: "Listening" }),
@@ -77,6 +74,10 @@ export class ListeningPlayer {
       viz, this.timerEl, this.progressBar, this.progressLabel, this.statusEl, this.startBtn,
     );
     container.replaceChildren(ui);
+
+    // Instrucoes primeiro: o modal abre ao entrar na secao. Depois de confirmar, o
+    // aluno pode ler as questoes a vontade e so entao clicar em "Begin Listening".
+    this.introModal();
   }
 
   // Modal de instrucoes com fundo borrado. Resolve quando o aluno confirma.
