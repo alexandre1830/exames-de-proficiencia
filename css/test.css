@@ -91,6 +91,20 @@
 /* ---- Listening player ---- */
 .player { text-align: center; padding: var(--space-7); }
 .player__status { font-family: var(--font-mono); color: var(--text-soft); margin-block: var(--space-4); }
+
+/* Countdown grande (leitura / revisao) */
+.player__timer { display: flex; flex-direction: column; align-items: center; gap: var(--space-1); margin-block: var(--space-5); }
+.player__timer[hidden] { display: none; }
+.player__timer-label { font-size: var(--fs-100); text-transform: uppercase; letter-spacing: .06em; color: var(--text-mute); }
+.player__timer-time { font-family: var(--font-mono); font-size: var(--fs-800); line-height: 1; color: var(--navy-deep); font-variant-numeric: tabular-nums; }
+.player__timer[data-warning="true"] .player__timer-time { color: var(--red); }
+
+/* Barra de progresso do audio */
+.player__progress { width: min(560px, 100%); height: 10px; margin: var(--space-5) auto var(--space-2); background: rgba(var(--navy-rgb), .12); border-radius: 999px; overflow: hidden; }
+.player__progress[hidden], .player__time-label[hidden] { display: none; }
+.player__progress-fill { height: 100%; width: 0; background: var(--navy); border-radius: 999px; transition: width var(--dur-1) linear; }
+.player__time-label { font-family: var(--font-mono); font-size: var(--fs-200); color: var(--text-soft); font-variant-numeric: tabular-nums; }
+
 .player__viz { display: flex; gap: 4px; justify-content: center; align-items: flex-end; height: 3rem; margin-block: var(--space-5); }
 .player__viz span { width: 5px; background: var(--navy); border-radius: 3px; animation: bar 1s var(--ease) infinite; }
 .player__viz[data-playing="false"] span { animation: none; height: 6px !important; opacity: .3; }
@@ -154,6 +168,22 @@
 .criteria-list li { display: flex; justify-content: space-between; gap: var(--space-3); font-size: var(--fs-200); padding: var(--space-1) 0; border-bottom: 1px dashed var(--line); }
 .criteria-list b { color: var(--navy); font-variant-numeric: tabular-nums; }
 .estimated { font-size: var(--fs-100); color: var(--mute); }
+
+/* ---- Modal (dialog nativo, fundo borrado) ---- */
+dialog.modal {
+  max-width: 34rem; width: calc(100% - 2rem); border: 1px solid var(--line);
+  border-radius: var(--radius-l); padding: var(--space-6);
+  background: var(--surface); color: var(--text); box-shadow: var(--shadow-strong);
+}
+dialog.modal::backdrop {
+  background: rgba(var(--navy-rgb), .35);
+  backdrop-filter: blur(6px);
+}
+dialog.modal h3 { margin-bottom: var(--space-4); }
+.modal__list { display: grid; gap: var(--space-2); margin: 0 0 var(--space-5); padding-left: var(--space-5); color: var(--text-soft); }
+.modal__actions { display: flex; justify-content: flex-end; }
+dialog.modal[open] { animation: modal-in var(--dur-2) var(--ease); }
+@keyframes modal-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 /* Estados utilitarios */
 .loading, .errorbox { text-align: center; padding: var(--space-8); color: var(--text-soft); }
