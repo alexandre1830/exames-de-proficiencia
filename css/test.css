@@ -171,7 +171,10 @@
 
 /* ---- Modal (dialog nativo, fundo borrado) ---- */
 dialog.modal {
-  max-width: 34rem; width: calc(100% - 2rem); border: 1px solid var(--line);
+  position: fixed; inset: 0; margin: auto;                 /* centraliza nos 2 eixos */
+  width: min(34rem, calc(100% - 2rem));
+  height: fit-content; max-height: calc(100% - 2rem); overflow: auto;
+  border: 1px solid var(--line);
   border-radius: var(--radius-l); padding: var(--space-6);
   background: var(--surface); color: var(--text); box-shadow: var(--shadow-strong);
 }
