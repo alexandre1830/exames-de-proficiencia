@@ -47,8 +47,8 @@ export class ListeningPlayer {
       return;
     }
 
-    // Visualizador de barras (durante a reproducao).
-    const viz = el("div", { class: "player__viz", dataset: { playing: "false" } });
+    // Visualizador de barras (so durante a reproducao).
+    const viz = el("div", { class: "player__viz", hidden: true, dataset: { playing: "false" } });
     for (let i = 0; i < 5; i++) viz.append(el("span"));
     this.viz = viz;
 
@@ -65,22 +65,16 @@ export class ListeningPlayer {
 
     this.statusEl = el("p", { class: "player__status", "aria-live": "polite" });
 
-    this.startBtn = el("button", { class: "btn btn--lg btn--accent", type: "button" }, ["Begin Listening"]);
-    this.startBtn.addEventListener("click", () => this.play());
-
-    ui.append(
-      el("h2", { text: "Listening" }),
-      el("p", { class: "section-head", text: "You will hear each recording once. You cannot pause or rewind." }),
-      viz, this.timerEl, this.progressBar, this.progressLabel, this.statusEl, this.startBtn,
-    );
+    // Sem tela intermediaria: apos confirmar o modal, o fluxo comeca direto
+    // (countdown de leitura -> audio). O gesto de clicar em "Start" libera o audio.
+    ui.append(viz, this.timerEl, this.progressBar, this.progressLabel, this.statusEl);
     container.replaceChildren(ui);
 
-    // Instrucoes primeiro: o modal abre ao entrar na secao. Depois de confirmar, o
-    // aluno pode ler as questoes a vontade e so entao clicar em "Begin Listening".
-    this.introModal();
+    this.introModal().then(() => this.play());
   }
 
-  // Modal de instrucoes com fundo borrado. Resolve quando o aluno confirma.
+  // Modal de instrucoes com fundo borrado. So fecha pelo botao (ESC bloqueado),
+  // garantindo que o fluxo sempre inicie ao confirmar.
   introModal() {
     return new Promise((resolve) => {
       const dlg = el("dialog", { class: "modal" });
@@ -88,7 +82,7 @@ export class ListeningPlayer {
       dlg.append(
         el("h3", { text: "Before you begin" }),
         el("ul", { class: "modal__list" }, [
-          el("li", { text: "Before each part you have 30 seconds to read the questions." }),
+          el("li", { text: "When you close this, a 30-second reading time starts before each part." }),
           el("li", { text: "Each recording plays once. You cannot pause or rewind." }),
           el("li", { text: "A progress bar shows how much of the audio is left." }),
           el("li", { text: "At the end you have 2 minutes to check your answers." }),
@@ -96,11 +90,8 @@ export class ListeningPlayer {
         el("div", { class: "modal__actions" }, [startBtn]),
       );
       startBtn.addEventListener("click", () => dlg.close("start"));
-      dlg.addEventListener("close", () => {
-        dlg.remove();
-        if (dlg.returnValue === "start") resolve();
-        // ESC/cancel: nao inicia; o botao "Begin" continua disponivel.
-      }, { once: true });
+      dlg.addEventListener("cancel", (e) => e.preventDefault()); // bloqueia ESC
+      dlg.addEventListener("close", () => { dlg.remove(); resolve(); }, { once: true });
       document.body.append(dlg);
       dlg.showModal();
       startBtn.focus();
@@ -147,6 +138,7 @@ export class ListeningPlayer {
   showProgress(on) {
     this.progressBar.hidden = !on;
     this.progressLabel.hidden = !on;
+    this.viz.hidden = !on;
     this.viz.dataset.playing = on ? "true" : "false";
   }
 
@@ -200,9 +192,6 @@ export class ListeningPlayer {
   }
 
   async play() {
-    this.startBtn.disabled = true;
-    this.startBtn.style.display = "none";
-
     for (let i = 0; i < this.audios.length; i++) {
       const audio = this.audios[i];
       if (this.stopped) return;
