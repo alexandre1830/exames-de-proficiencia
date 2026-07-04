@@ -38,22 +38,50 @@ class Exam {
       return;
     }
     this.bySkill = groupBySection(this.data.items);
-    this.sections = orderedSections(this.data.paper).filter((s) => (this.bySkill[s] || []).length || s === "listening");
+    // Secoes disponiveis na prova (na ordem canonica).
+    this.available = orderedSections(this.data.paper).filter((s) => (this.bySkill[s] || []).length || s === "listening");
     this.renderIntro();
   }
 
   renderIntro() {
-    const card = el("div", { class: "card measure", style: "margin-inline:auto;margin-top:3rem" }, [
+    const blurb = {
+      listening: "4 parts, plays once.",
+      reading: "3 passages, 40 questions.",
+      writing: "2 tasks, marked by criterion.",
+      speaking: "3 parts, recorded responses.",
+    };
+
+    // Card de "prova completa".
+    const fullCard = el("button", {
+      class: "choice choice--full", type: "button", onclick: () => this.start(null),
+    }, [
+      el("span", { class: "choice__tag", text: "Full test" }),
+      el("span", { class: "choice__title", text: "Complete exam" }),
+      el("span", { class: "choice__desc", text: "All four sections in order, each timed. The overall band is the average of the four." }),
+    ]);
+
+    // Um card por seção isolada.
+    const skillCards = this.available.map((s) => el("button", {
+      class: "choice", type: "button", onclick: () => this.start(s),
+    }, [
+      el("span", { class: "choice__tag", text: "Single section" }),
+      el("span", { class: "choice__title", text: SKILL_LABEL[s] }),
+      el("span", { class: "choice__desc", text: blurb[s] || "" }),
+    ]));
+
+    const wrap = el("div", { class: "intro" }, [
       el("p", { class: "chip chip--accent", text: "IELTS Academic · Practice" }),
       el("h1", { text: this.data.paper.title }),
-      el("p", { class: "measure", text: "Four sections in order: Listening, Reading, Writing, Speaking. Each section is timed. Listening plays once, without pause or rewind." }),
+      el("p", { class: "intro__lead measure", text: "Take the complete exam, or focus on a single section to practise what you need most." }),
+      el("div", { class: "choice-grid" }, [fullCard, ...skillCards]),
       el("p", { class: "notice", text: "Original practice test in the style of IELTS. Not affiliated with or endorsed by the IELTS partners. IELTS is a trademark of the IELTS partners." }),
-      el("button", { class: "btn btn--lg btn--accent", type: "button", style: "margin-top:1rem", onclick: () => this.start() }, ["Start the exam"]),
     ]);
-    this.root.replaceChildren(card);
+    this.root.replaceChildren(wrap);
   }
 
-  async start() {
+  // only: null = prova completa; ou uma skill para praticar isolada.
+  async start(only = null) {
+    this.sections = only ? [only] : this.available.slice();
     try {
       this.attemptId = await createAttempt(this.paperId);
     } catch (e) {

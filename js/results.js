@@ -35,10 +35,11 @@ function sectionCard(s) {
 
 export function renderResults(container, report) {
   const wrap = el("div", { class: "report" });
+  const single = (report.sections || []).length === 1;
 
   wrap.append(el("div", { class: "report__hero" }, [
     el("div", {}, [
-      el("p", { class: "chip", text: "Overall band" }),
+      el("p", { class: "chip", text: single ? "Band" : "Overall band" }),
       el("p", { class: "band-big", text: bandText(report.overallBand) }),
     ]),
     el("p", { class: "cefr-tag", text: report.cefr ? `≈ ${report.cefr}` : "" }),

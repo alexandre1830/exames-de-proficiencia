@@ -1,5 +1,31 @@
 /* Layout de prova e resultados. Tokens only. */
 
+/* ---- Tela inicial: escolha do modo ---- */
+.intro { max-width: var(--max); margin-inline: auto; padding: var(--space-8) var(--space-5); }
+.intro h1 { margin-block: var(--space-3) var(--space-4); }
+.intro__lead { font-size: var(--fs-400); color: var(--text-soft); margin-bottom: var(--space-6); }
+
+.choice-grid {
+  display: grid; gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-bottom: var(--space-6);
+}
+.choice {
+  display: flex; flex-direction: column; gap: var(--space-2); text-align: left;
+  padding: var(--space-5); background: var(--surface);
+  border: 1.5px solid var(--line); border-radius: var(--radius-l); cursor: pointer;
+  transition: transform var(--dur-1) var(--ease), box-shadow var(--dur-2) var(--ease), border-color var(--dur-1) var(--ease);
+}
+.choice:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); border-color: var(--navy-light); }
+.choice__tag { font-size: var(--fs-100); font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--text-mute); }
+.choice__title { font-family: var(--font-serif); font-size: var(--fs-500); color: var(--navy-deep); }
+.choice__desc { font-size: var(--fs-200); color: var(--text-soft); }
+
+/* Card da prova completa: destaque, ocupa a linha toda */
+.choice--full { grid-column: 1 / -1; border-color: var(--navy); background: rgba(var(--navy-rgb), .04); }
+.choice--full .choice__tag { color: var(--red-dark); }
+.choice--full:hover { border-color: var(--navy); }
+
 /* ---- Barra de prova (timer + secao) ---- */
 .exam-bar {
   position: sticky; top: 0; z-index: 30;
