@@ -78,7 +78,9 @@
 .item__instructions { font-size: var(--fs-200); color: var(--text-soft); margin-bottom: var(--space-4); }
 .item__range { font-weight: 700; color: var(--navy); }
 
-.qblock { margin-bottom: var(--space-5); }
+/* qblock tambem e usado como <fieldset> no single_select: reset + espacamento */
+.qblock { margin: 0 0 var(--space-6); border: 0; padding: 0; min-inline-size: 0; }
+.qblock:last-child { margin-bottom: 0; }
 .qblock__num {
   display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 2rem;
   background: var(--navy); color: var(--white); border-radius: 999px; font-weight: 700; font-size: var(--fs-200);

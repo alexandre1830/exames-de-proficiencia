@@ -16,7 +16,7 @@ export const singleSelect = {
 
     for (const q of item.content.questions || []) {
       const name = `${item.id}-${q.n}`;
-      const block = el("fieldset", { class: "qblock", style: "border:none;padding:0;margin:0" });
+      const block = el("fieldset", { class: "qblock" });
       const legend = el("legend", { class: "qblock__stem" }, [
         el("span", { class: "qblock__num", text: String(q.n) }),
         q.stem || q.statement || "",
